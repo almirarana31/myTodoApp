@@ -1,140 +1,64 @@
-.home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  font-family: "Poppins", sans-serif;
-}
-
-h1 {
-  color: #ff69b4;
-  margin-bottom: 20px;
+/* Main container styling */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
 }
 
 /* Add Task Button */
-.open-modal-button {
-  background-color: #d63384;
+.add-task-btn {
+  background-color: #0d6efd;
   color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
+  padding: 10px 20px;
   font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.open-modal-button:hover {
-  background-color: #b1226d;
-}
-
-/* Task List */
-.task-list {
-  list-style: none;
-  padding: 0;
-  width: 80%;
-  max-width: 600px;
-}
-
-.task-item {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.task-item.completed span {
-  text-decoration: line-through;
-  color: gray;
-}
-
-.task-item span {
-  cursor: pointer;
-  font-size: 18px;
-}
-
-/* Delete Button */
-.delete-button {
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-/* Logout Button */
-.logout-button {
-  margin-top: 20px;
-  background-color: #d63384;
-  padding: 12px;
-  border: none;
   border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.logout-button:hover {
-  background-color: #b1226d;
-}
-
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-}
-
-.modal-content h2 {
-  margin-bottom: 15px;
-}
-
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.modal-buttons button {
-  padding: 10px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  flex: 1;
-  margin: 0 5px;
+  width: 200px;
+  transition: background-color 0.3s;
 }
 
-.modal-buttons .cancel-button {
-  background-color: gray;
-  color: white;
+.add-task-btn:hover {
+  background-color: #0b5ed7;
 }
 
-.modal-buttons button:hover {
-  opacity: 0.8;
+/* Navbar styling */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Footer styling */
+footer {
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive container */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .add-task-btn {
+    width: 90%;
+    max-width: 200px;
+  }
+}
+
+/* Animation for adding new tasks */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-card:first-child {
+  animation: fadeIn 0.5s ease-out;
 }

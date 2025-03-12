@@ -1,0 +1,130 @@
+.task-list-container {
+  width: 100%;
+  max-width: 800px;
+  background: transparent;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.task-card {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.completed-task {
+  opacity: 0.8;
+  border-left: 4px solid #4CAF50;
+}
+
+.task-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.task-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff69b4;
+  margin-bottom: 5px;
+}
+
+.task-description {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.task-date {
+  color: #999;
+  font-size: 12px;
+}
+
+.task-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn {
+  background-color: #ffca28;
+  color: black;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+  background-color: #ffb300;
+}
+
+.edit-btn:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.delete-btn {
+  background-color: #ef5350;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+.empty-task-message {
+  text-align: center;
+  padding: 20px;
+  color: #999;
+}
+
+/* Make the form-check-input (checkbox) larger and more visible */
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ff69b4;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: #ff69b4;
+  border-color: #ff69b4;
+}
+
+/* Animation for task completion */
+@keyframes moveDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+.completed-task {
+  animation: moveDown 0.5s ease forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .task-content {
+    flex-direction: column;
+  }
+  
+  .task-buttons {
+    margin-top: 15px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
