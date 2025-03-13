@@ -5,6 +5,10 @@ import EditTaskModal from "./components/EditTaskModal";
 import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, serverTimestamp, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/HomeStyles.css";
+import logo from "../assets/logo.png";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 const HomePage = () => {
   const [tasks, setTasks] = useState([]);
@@ -127,28 +131,33 @@ const HomePage = () => {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 bg-light">
+    <div className="app-container d-flex flex-column min-vh-100 bg-light">
       {/* Navbar */}
-      <nav className="navbar navbar-light" style={{ backgroundColor: "#ff69b4", padding: "15px" }}>
-        <div className="container">
-          <span className="navbar-brand mb-0 h1 text-white">
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/9536/9536870.png"
-              alt="Logo"
-              width="30"
-              height="30"
-              className="d-inline-block align-top me-2"
-            />
-            Ally's To-do App
-          </span>
-        </div>
-      </nav>
+      <Navbar style={{ backgroundColor: "#ff69b4"}} data-bs-theme="light">
+        <Container>
+        <img
+            src={logo}
+            alt="logo"
+            width="50"
+            height="50"
+            className="d-inline-block align-top me-2"
+          
+          />
+          <Navbar.Brand style={{ color: "white" }} href="#home">Ally's To-do App</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link style={{ color: "white" }} href="#home">Home</Nav.Link>
+            <Nav.Link style={{ color: "white" }} href="#features">Features</Nav.Link>
+            <Nav.Link style={{ color: "white" }} href="#pricing">Pricing</Nav.Link>
+          </Nav>
+        </Container>
+
+      </Navbar>
 
       {/* Main Content */}
-      <div className="container my-4">
-        <div className="d-flex justify-content-center">
+      <div className="container my-4 flex grow-1">
+        <div className="add-task-container">
           <button 
-            className="btn btn-primary mb-4 add-task-btn" 
+            className="btn btn-primary add-task-btn" 
             onClick={() => setAddModalOpen(true)}
           >
             Add Task
@@ -173,7 +182,7 @@ const HomePage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="text-center text-white py-3 mt-auto" style={{ backgroundColor: "#ff69b4" }}>
+      <footer className="text-center text-white py-3" style={{ backgroundColor: "#ff69b4" }}>
         <p className="mb-0">© 2025 Ally's To-do App. All Rights Reserved.</p>
       </footer>
 

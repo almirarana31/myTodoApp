@@ -1,119 +1,134 @@
+/* TaskList.css */
 .task-list-container {
-  width: 100%;
-  max-width: 800px;
-  background: transparent;
-  padding: 15px;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
 }
 
 .task-card {
-  width: 100%;
-  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
   border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 15px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  background: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 80%;
+  width: 60%;
+  align-self: center;
 }
 
-.completed-task {
-  opacity: 0.8;
-  border-left: 4px solid #4CAF50;
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .task-content {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
+}
+
+.task-left-section {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  max-width: calc(100% - 140px); /* Leave space for buttons */
+}
+
+.checkbox-container {
+  margin-right: 8px; /* Reduced from 12px */
+  padding-top: 7px; /* Slightly adjusted for better vertical alignment */
+  flex-shrink: 0;
+}
+
+.task-checkbox {
+  transform: scale(1.2); /* Keep this the same */
+  margin: 0; /* Ensure no browser default margins */
 }
 
 .task-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #ff69b4;
   margin-bottom: 5px;
+  word-break: break-all;
+  white-space: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ff69b4;
+  width: 100%;
+  margin-top: 0; /* Ensure no top margin */
+  line-height: 1.2; /* Adjust line height for better alignment */
+}
+
+.task-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0; /* Important for text truncation to work */
 }
 
 .task-description {
-  color: #666;
   margin-bottom: 5px;
+  color: #555;
+  word-break: break-word;
 }
 
 .task-date {
-  color: #999;
-  font-size: 12px;
+  color: #888;
+  display: block;
 }
 
 .task-buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.edit-btn, .delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* Prevent button text from wrapping */
 }
 
 .edit-btn {
-  background-color: #ffca28;
-  color: black;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  background-color: rgb(249, 231, 126);
+  color: #333;
+  margin-right: 8px;
 }
 
 .edit-btn:hover {
-  background-color: #ffb300;
+  background-color: rgb(230, 212, 114);
 }
 
 .edit-btn:disabled {
-  background-color: #e0e0e0;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
 .delete-btn {
-  background-color: #ef5350;
+  background-color: #ff6b6b;
   color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .delete-btn:hover {
-  background-color: #d32f2f;
+  background-color: #de5050;
+}
+
+.completed-task {
+  background-color: #f9f9f9;
 }
 
 .empty-task-message {
   text-align: center;
-  padding: 20px;
-  color: #999;
-}
-
-/* Make the form-check-input (checkbox) larger and more visible */
-.form-check-input {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ff69b4;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.form-check-input:checked {
-  background-color: #ff69b4;
-  border-color: #ff69b4;
-}
-
-/* Animation for task completion */
-@keyframes moveDown {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(10px);
-  }
-}
-
-.completed-task {
-  animation: moveDown 0.5s ease forwards;
+  color: #888;
+  padding: 30px;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  width: 100%;
 }
 
 /* Responsive adjustments */
@@ -122,9 +137,13 @@
     flex-direction: column;
   }
   
+  .task-left-section {
+    max-width: 100%;
+  }
+  
   .task-buttons {
-    margin-top: 15px;
-    width: 100%;
-    justify-content: flex-end;
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-left: 0;
   }
 }

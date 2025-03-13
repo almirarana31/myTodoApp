@@ -21,14 +21,17 @@ const TaskList = ({ tasks, onDelete, onToggleComplete, onEdit }) => {
             className={`task-card ${task.completed ? "completed-task" : ""}`}
           >
             <div className="task-content">
-              <div className="d-flex align-items-center">
-                <input
-                  type="checkbox"
-                  className="form-check-input me-3"
-                  checked={task.completed}
-                  onChange={() => onToggleComplete(task.id, task.completed)}
-                />
-                <div>
+              {/* Left Section: Checkbox + Task Details */}
+              <div className="task-left-section">
+                <div className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    className="task-checkbox"
+                    checked={task.completed}
+                    onChange={() => onToggleComplete(task.id, task.completed)}
+                  />
+                </div>
+                <div className="task-details">
                   <h5 className={`task-title ${task.completed ? "text-muted text-decoration-line-through" : ""}`}>
                     {task.title}
                   </h5>
@@ -38,6 +41,8 @@ const TaskList = ({ tasks, onDelete, onToggleComplete, onEdit }) => {
                   </small>
                 </div>
               </div>
+
+              {/* Right Section: Buttons */}
               <div className="task-buttons">
                 <button 
                   className="edit-btn" 
