@@ -5,15 +5,9 @@
   justify-content: center;
   height: 100vh;
   background-color: #ff69b4;
-  font-family: "Poppins", sans-serif;
 }
 
-h2 {
-  color: white;
-  margin-bottom: 20px;
-}
-
-form {
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +17,7 @@ form {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-input {
+.password-input, .email-input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -31,7 +25,7 @@ input {
   border: 1px solid #ccc;
 }
 
-button {
+.login-button {
   background-color: #d63384;
   color: white;
   padding: 10px;
@@ -42,11 +36,12 @@ button {
   width: 100%;
 }
 
-button:hover {
+
+.login-button:hover {
   background-color: #b1226d;
 }
 
-p {
+.login-p {
   color: white;
   margin-top: 15px;
 }

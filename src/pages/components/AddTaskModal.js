@@ -29,7 +29,7 @@ const AddTaskModal = ({ isOpen, onClose, onAddTask }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Add New Task</h2>
+        <h2 className="new-task-modal">Add New Task</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"

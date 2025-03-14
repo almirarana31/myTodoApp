@@ -1,21 +1,48 @@
 import React, { useState, useEffect } from "react";
+import CustomNavbar from "./components/CustomNavbar";
 import TaskList from "./components/TaskList";
 import AddTaskModal from "./components/AddTaskModal";
 import EditTaskModal from "./components/EditTaskModal";
-import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, serverTimestamp, query, orderBy } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, serverTimestamp, query, orderBy, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/HomeStyles.css";
-import logo from "../assets/logo.png";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { getAuth } from "firebase/auth";
 
 const HomePage = () => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
   const [tasks, setTasks] = useState([]);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // User Info
+  const [username, setUsername] = useState("User");
+  const [profilePic, setProfilePic] = useState("https://via.placeholder.com/150");
+  const [bio, setBio] = useState("Welcome to your task manager!");
+
+  // Fetch User Info
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (userSnap.exists()) {
+          const userData = userSnap.data();
+          setUsername(userData.username || "User");
+          setProfilePic(userData.profilePic || "https://via.placeholder.com/150");
+          setBio(userData.bio || "Welcome to your task manager!");
+        }
+      }
+    };
+
+    fetchUserData();
+  }, [user]);
+
+
 
   // Fetch tasks from Firestore
   useEffect(() => {
@@ -131,33 +158,22 @@ const HomePage = () => {
   };
 
   return (
-    <div className="app-container d-flex flex-column min-vh-100 bg-light">
+      <div className="app-container d-flex flex-column min-vh-100 bg-light">
       {/* Navbar */}
-      <Navbar style={{ backgroundColor: "#ff69b4"}} data-bs-theme="light">
-        <Container>
-        <img
-            src={logo}
-            alt="logo"
-            width="50"
-            height="50"
-            className="d-inline-block align-top me-2"
-          
-          />
-          <Navbar.Brand style={{ color: "white" }} href="#home">Ally's To-do App</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link style={{ color: "white" }} href="#home">Home</Nav.Link>
-            <Nav.Link style={{ color: "white" }} href="#features">Features</Nav.Link>
-            <Nav.Link style={{ color: "white" }} href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
+      <CustomNavbar />
 
-      </Navbar>
+      {/* Welcome Section */}
+        <div className="welcome-container">
+          <img src={profilePic} alt="Profile" className="welcome-profile-pic" />
+            <h2 className="welcome-message">Welcome, {username}!</h2>
+              <p className="welcome-bio">{bio}</p>
+        </div>
 
       {/* Main Content */}
       <div className="container my-4 flex grow-1">
         <div className="add-task-container">
-          <button 
-            className="btn btn-primary add-task-btn" 
+          <button
+            className="btn btn-primary d-block mx-auto w-100" 
             onClick={() => setAddModalOpen(true)}
           >
             Add Task
@@ -180,11 +196,6 @@ const HomePage = () => {
           />
         )}
       </div>
-
-      {/* Footer */}
-      <footer className="text-center text-white py-3" style={{ backgroundColor: "#ff69b4" }}>
-        <p className="mb-0">© 2025 Ally's To-do App. All Rights Reserved.</p>
-      </footer>
 
       {/* Modals */}
       <AddTaskModal 

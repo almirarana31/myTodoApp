@@ -26,25 +26,25 @@ const LoginPage = () => {
 
   return (
     <div className="auth-container">
-      <h2>Welcome Back!</h2>
-      <form onSubmit={handleLogin}>
-        <input
+      <h2 style={{color:"white"}}>Welcome Back!</h2>
+      <form className="login-form" onSubmit={handleLogin}>
+        <input className="email-input"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
+        <input className="password-input"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button className="login-button" type="submit">Login</button>
       </form>
-      <p>
+      <p className="login-p">
         Don't have an account? <span onClick={() => navigate("/register")}>Sign up</span>
       </p>
     </div>

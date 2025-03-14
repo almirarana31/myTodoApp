@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cloudinary/react": "^1.14.1",
+    "@cloudinary/url-gen": "^1.21.0",
     "@react-navigation/native": "^7.0.15",
     "@react-navigation/stack": "^7.1.2",
     "@testing-library/dom": "^10.4.0",
@@ -10,6 +12,7 @@
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
+    "cloudinary": "^2.6.0",
     "firebase": "^11.4.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",

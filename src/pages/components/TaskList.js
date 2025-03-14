@@ -45,14 +45,14 @@ const TaskList = ({ tasks, onDelete, onToggleComplete, onEdit }) => {
               {/* Right Section: Buttons */}
               <div className="task-buttons">
                 <button 
-                  className="edit-btn" 
+                  className="btn btn-warning w-100" 
                   onClick={() => onEdit(task)}
                   disabled={task.completed}
                 >
                   Edit
                 </button>
                 <button 
-                  className="delete-btn" 
+                  className="btn btn-danger w-100" 
                   onClick={() => onDelete(task.id)}
                 >
                   Delete
