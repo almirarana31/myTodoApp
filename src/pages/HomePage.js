@@ -7,6 +7,7 @@ import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, serverTimestamp
 import { db } from "../firebase";
 import "../styles/HomeStyles.css";
 import { getAuth } from "firebase/auth";
+import { size } from "@cloudinary/url-gen/qualifiers/textFit";
 
 const HomePage = () => {
   const auth = getAuth();
@@ -174,6 +175,7 @@ const HomePage = () => {
         <div className="add-task-container">
           <button
             className="btn btn-primary d-block mx-auto w-100" 
+            style={{ fontSize: "20px" }}
             onClick={() => setAddModalOpen(true)}
           >
             Add Task

@@ -11,7 +11,9 @@
 }
 
 .new-task-modal {
-  color: #a32664;
+  color: #460024;
+  box-shadow: black;
+  text-shadow: #a32664;
 }
 
 .modal-content {

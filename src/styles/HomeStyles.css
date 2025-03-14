@@ -6,8 +6,9 @@
   padding: 20px;
   border-radius: 10px;
   margin: 20px auto;
-  max-width: 600px;
+  max-width: 1000px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 50%;
 }
 
 .navbar-logo {
@@ -17,8 +18,8 @@
 }
 
 .welcome-profile-pic {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
@@ -30,7 +31,7 @@
 }
 
 .welcome-bio {
-  font-size: 16px;
+  font-size: 18px;
   font-style: italic;
   color: white;
 }
