@@ -1,12 +1,3 @@
-/* Add this to your HomeStyles.css */
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  max-height: 100%;
-
-}
-
 /* Welcome Section */
 .welcome-container {
   text-align: center;
@@ -17,6 +8,12 @@ html, body, #root {
   margin: 20px auto;
   max-width: 600px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-logo {
+  height: 50px;
+  margin-right: 10px;
+
 }
 
 .welcome-profile-pic {
@@ -64,51 +61,7 @@ html, body, #root {
   margin-bottom: 5%;
 }
 
-/* Navbar Custom Styling */
-.custom-navbar {
-  background-color: #ff69b4 !important;
-  padding: 10px;
-}
 
-/* Navbar Links */
-.custom-navbar .nav-link,
-.custom-navbar .navbar-brand {
-  color: white !important;
-  text-decoration: none !important;
-}
 
-/* Navbar Hover Effect */
-.custom-navbar .nav-link:hover,
-.custom-navbar .dropdown-item:hover {
-  color: #ffebcd !important;
-}
 
-/* Fix Hamburger Menu Button */
-.navbar-toggler {
-  border: none !important;
-  background-color: transparent !important;
-  padding: 5px !important;
-  outline: none !important;
-  box-shadow: none !important;
-  width: 10px;
-  margin-left: auto;
-}
 
-/* Dropdown Text Color */
-.navbar .dropdown-item {
-  color: white !important;
-  padding: 6px 10px !important;
-}
-
-/* Logo Styling */
-.navbar-logo {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.navbar-toggler-icon {
-  filter: brightness(0) invert(1);
-}

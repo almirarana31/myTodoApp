@@ -1,0 +1,34 @@
+/* Navbar Custom Styling */
+.custom-navbar {
+  background-color: #ff69b4 !important;
+}
+/* Navbar Links */
+.custom-navbar .nav-link,
+.custom-navbar .navbar-brand {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* Navbar Hover Effect */
+.custom-navbar .nav-link:hover,
+.custom-navbar .dropdown-item:hover {
+  color: #ffebcd !important;
+}
+
+/* Fix Hamburger Menu Button */
+.navbar-toggler {
+  border: none !important;
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  width: 10px;
+  margin-left: auto;
+}
+/* Dropdown Text Color */
+.navbar .dropdown-item {
+  color: white !important;
+}
+
+.navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
