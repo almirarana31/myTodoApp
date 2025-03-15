@@ -67,7 +67,7 @@ const RegisterPage = () => {
           />
           <button className="button-register" type="submit">Register</button>
         </form>
-        <p>
+        <p className="account-already">
           Already have an account? <span onClick={() => navigate("/")}>Log in</span>
         </p>
       </div>

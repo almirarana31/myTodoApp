@@ -19,7 +19,7 @@
 .modal-content {
   background: white;
   padding: 20px;
-  width: 300px;
+  width: 70%;
   text-align: center;
   border-radius: 5px;
 }
@@ -27,7 +27,8 @@
 
 .modal-content input,
 .modal-content textarea {
-  width: 100%;
+  width: 60%;
+  height: 40%;
   padding: 10px;
   margin: 5px 0;
   border: 1px solid #ccc;
