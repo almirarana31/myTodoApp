@@ -65,8 +65,8 @@ export const db = getFirestore(app);
 npm start #Runs on localhost:3000
 ```
 
-## After installing and running...</br>
-# 🎀 You should be greeted by a pink login page!
+# After installing and running...</br>
+## 🎀 You should be greeted by a pink login page!
 ![Screenshot 2025-03-15 123444](https://github.com/user-attachments/assets/62354c61-7cb1-4166-9526-c95537e99d2a)
 </br>
 Sign up or log in manually, or use your Google account.
