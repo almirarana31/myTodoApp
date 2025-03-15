@@ -17,7 +17,7 @@ docker pull alfarana/my-todo-app
 docker run -p 3000:3000 -e HOST=0.0.0.0 alfarana/my-todo-app
 ```
 
-(3) Access the app
+(3) Access the app<br/>
 Open [http://localhost:3000](http://localhost:3000). in your browser.<br/><br/>
 
 
