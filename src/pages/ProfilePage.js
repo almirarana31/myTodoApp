@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/RegisterStyles.css"; // Keeping your existing styles
 import CustomNavbar from "./components/CustomNavbar";
@@ -10,7 +10,7 @@ const ProfilePage = () => {
   const user = auth.currentUser;
   
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState(user?.email || "");
+  const [email] = useState(user?.email || "");
   const [profilePic, setProfilePic] = useState("https://via.placeholder.com/150");
   const [bio, setBio] = useState("");
   const [createdAt, setCreatedAt] = useState("");
@@ -51,7 +51,7 @@ const ProfilePage = () => {
       const data = await response.json();
       const imageUrl = data.secure_url;
 
-      // Update Firestore with the new profile picture URL
+      // Update Firestore with the new profile picture
       await updateDoc(doc(db, "users", user.uid), {
         profilePic: imageUrl,
       });
@@ -74,35 +74,22 @@ const ProfilePage = () => {
 
   return (
     <div className="app-container d-flex flex-column min-vh-100 bg-light">
-    {/* Navbar */}
     <CustomNavbar />
     <div className="profile-body">
       <div className="profile-container">
         <h2 className="profile-title">My Profile</h2>
-        <div className="profile-card">
-          {/* Profile Picture */}
-          <img src={profilePic} alt="Profile" className="profile-pic" />
+          <div className="profile-card">
+            <img src={profilePic} alt="Profile" className="profile-pic" />
+            <input type="file" accept="image/*" onChange={handleImageUpload} className="file-input" />
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="profile-input" />
+            <input type="email" value={email} disabled className="profile-input disabled" />
+            <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="profile-bio" placeholder="Write something about yourself..."></textarea>
+            <p className="created-at">Account Created: {createdAt}</p>
 
-          {/* Image Upload Input */}
-          <input type="file" accept="image/*" onChange={handleImageUpload} className="file-input" />
-
-          {/* Username Input */}
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="profile-input" />
-
-          {/* Email (Read-Only) */}
-          <input type="email" value={email} disabled className="profile-input disabled" />
-
-          {/* Bio Input */}
-          <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="profile-bio" placeholder="Write something about yourself..."></textarea>
-
-          {/* Account Creation Date */}
-          <p className="created-at">Account Created: {createdAt}</p>
-
-          {/* Save Changes Button */}
-          <button className="save-btn" onClick={handleSave}>Save Changes</button>
+            <button className="save-btn" onClick={handleSave}>Save Changes</button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

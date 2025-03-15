@@ -7,7 +7,6 @@ import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, serverTimestamp
 import { db } from "../firebase";
 import "../styles/HomeStyles.css";
 import { getAuth } from "firebase/auth";
-import { size } from "@cloudinary/url-gen/qualifiers/textFit";
 
 const HomePage = () => {
   const auth = getAuth();
@@ -42,8 +41,6 @@ const HomePage = () => {
 
     fetchUserData();
   }, [user]);
-
-
 
   // Fetch tasks from Firestore
   useEffect(() => {
@@ -160,17 +157,12 @@ const HomePage = () => {
 
   return (
       <div className="app-container d-flex flex-column min-vh-100 bg-light">
-      {/* Navbar */}
       <CustomNavbar />
-
-      {/* Welcome Section */}
         <div className="welcome-container">
           <img src={profilePic} alt="Profile" className="welcome-profile-pic" />
             <h2 className="welcome-message">Welcome, {username}!</h2>
               <p className="welcome-bio">{bio}</p>
         </div>
-
-      {/* Main Content */}
       <div className="container my-4 flex grow-1">
         <div className="add-task-container">
           <button
@@ -199,7 +191,6 @@ const HomePage = () => {
         )}
       </div>
 
-      {/* Modals */}
       <AddTaskModal 
         isOpen={addModalOpen} 
         onClose={() => setAddModalOpen(false)} 
