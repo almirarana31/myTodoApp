@@ -61,6 +61,8 @@ export const db = getFirestore(app);
 ```
 
 (4) Run the App
-```npm start #Runs on localhost:3000```
+```
+npm start #Runs on localhost:3000
+```
 
 
