@@ -19,7 +19,7 @@ docker run -p 3000:3000 -e HOST=0.0.0.0 alfarana/my-todo-app
 
 (3) Access the app
 Open [http://localhost:3000](http://localhost:3000). in your browser.
-
+<br/>
 ### Setup via GitHub (Manual Installation)
 (1) Clone the Repository 
 ```
