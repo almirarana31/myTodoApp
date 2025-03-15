@@ -7,8 +7,9 @@ This is a simple to-do application built with React and Firebase, with support f
 You can set up this project using GitHub (manual installation) or Docker (containerized setup).
 
 ### Setup via GitHub (Manual Installation)
-(1) Clone the Repository
+(1) Clone the Repository 
 ```git clone https://github.com/<your-username>/my-todo-app.git```
+
 ```cd my-todo-app```
 
 (2) Install Node Dependencies
@@ -35,4 +36,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);```
+
+(4) Run the App
+```npm start #Runs on localhost:3000```
+
 
