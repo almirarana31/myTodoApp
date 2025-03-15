@@ -6,21 +6,42 @@ This is a simple to-do application built with React and Firebase, with support f
 ## Let's get started!
 You can set up this project using GitHub (manual installation) or Docker (containerized setup).
 
+### Setup via Docker (Containerized Deployment)
+(1) Pull the docker image from the repository
+```
+docker pull alfarana/my-todo-app
+```
+
+(2) Run the Docker Container
+```
+docker run -p 3000:3000 -e HOST=0.0.0.0 alfarana/my-todo-app
+```
+
+(3) Access the app
+Open [http://localhost:3000](http://localhost:3000). in your browser.
+
 ### Setup via GitHub (Manual Installation)
 (1) Clone the Repository 
-```git clone https://github.com/<your-username>/my-todo-app.git```
-
-```cd my-todo-app```
+```
+git clone https://github.com/<your-username>/my-todo-app.git
+```
+```
+cd my-todo-app
+```
 
 (2) Install Node Dependencies
-```npm install```
+```
+npm install
+```
 
 (3) Set up Firebase/Firestore
 1. Create a Firebase project at Firebase Console.
 2. Enable Authentication (Email/Password + Google Sign-In).
 3. Create a Firestore Database.
 4. Copy your Firebase config and update firebase.js
-```import { initializeApp } from "firebase/app";
+
+```
+import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -35,7 +56,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-export const db = getFirestore(app);```
+export const db = getFirestore(app);
+```
 
 (4) Run the App
 ```npm start #Runs on localhost:3000```
