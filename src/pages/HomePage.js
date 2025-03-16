@@ -3,7 +3,7 @@ import CustomNavbar from "./components/CustomNavbar";
 import TaskList from "./components/TaskList";
 import AddTaskModal from "./components/AddTaskModal";
 import EditTaskModal from "./components/EditTaskModal";
-import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, serverTimestamp, query, orderBy, getDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, serverTimestamp, query, orderBy, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/HomeStyles.css";
 import { getAuth } from "firebase/auth";
@@ -29,8 +29,17 @@ const HomePage = () => {
       if (user) {
         const userRef = doc(db, "users", user.uid);
         const userSnap = await getDoc(userRef);
-
-        if (userSnap.exists()) {
+  
+        if (!userSnap.exists()) {
+          // Document doesn't exist → Create it
+          await setDoc(userRef, {
+            username: user.displayName || "User",
+            profilePic: user.photoURL || "https://via.placeholder.com/150",
+            bio: "Welcome to your task manager!",
+          });
+          console.log("User document created!");
+        } else {
+          // Document exists → Load data
           const userData = userSnap.data();
           setUsername(userData.username || "User");
           setProfilePic(userData.profilePic || "https://via.placeholder.com/150");
@@ -38,7 +47,7 @@ const HomePage = () => {
         }
       }
     };
-
+  
     fetchUserData();
   }, [user]);
 

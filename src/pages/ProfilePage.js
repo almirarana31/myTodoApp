@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/RegisterStyles.css"; // Keeping your existing styles
 import CustomNavbar from "./components/CustomNavbar";
@@ -20,17 +20,29 @@ const ProfilePage = () => {
       if (user) {
         const userRef = doc(db, "users", user.uid);
         const userSnap = await getDoc(userRef);
-
-        if (userSnap.exists()) {
+  
+        if (!userSnap.exists()) {
+          // Document doesn't exist → Create it
+          await setDoc(userRef, {
+            username: user.displayName || "User",
+            profilePic: user.photoURL || "https://via.placeholder.com/150",
+            bio: "Welcome to your task manager!",
+            createdAt: serverTimestamp(),
+            
+            
+          });
+          console.log("User document created!");
+        } else {
+          // Document exists → Load data
           const userData = userSnap.data();
-          setUsername(userData.username);
+          setUsername(userData.username || "User");
           setProfilePic(userData.profilePic || "https://via.placeholder.com/150");
-          setBio(userData.bio || "");
-          setCreatedAt(userData.createdAt?.toDate().toDateString() || "N/A");
+          setBio(userData.bio || "Welcome to your task manager!");
+          setCreatedAt(userData.createdAt ? userData.createdAt.toDate().toDateString() : "N/A");
         }
       }
     };
-
+  
     fetchUserData();
   }, [user]);
 

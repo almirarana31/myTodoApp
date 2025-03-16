@@ -7,7 +7,7 @@ import "../styles/LoginStyles.css";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [setError] = useState(null);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
 
@@ -54,8 +54,8 @@ const LoginPage = () => {
           required
         />
         <button className="login-button" type="submit">Login</button>
-        <button className="button-google" onClick={handleGoogleLogIn}>Log in with Google</button>
       </form>
+      <button className="button-google" onClick={handleGoogleLogIn}>Log in with Google</button>
       <p className="login-p">
         Don't have an account? <span onClick={() => navigate("/register")}>Sign up</span>
       </p>
