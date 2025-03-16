@@ -1,70 +1,83 @@
-# Getting Started with Create React App
-
+# Welcome to Ally's To Do List App ❤️
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This is a simple to-do application built with React and Firebase, with support for Docker deployment.
 
-In the project directory, you can run:
+## Let's get started! ✨
+You can set up this project using GitHub (manual installation) or Docker (containerized setup).
 
-### `npm start`
+### 🐳 Setup via Docker (Containerized Deployment)
+1️⃣ Pull the docker image from the repository
+```
+docker pull alfarana/my-todo-app
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2️⃣ Run the Docker Container
+```
+docker run -p 3000:3000 -e HOST=0.0.0.0 alfarana/my-todo-app
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3️⃣ Access the app<br/>
+Open [http://localhost:3000](http://localhost:3000) in your browser.<br/><br/>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🔧 Setup via GitHub (Manual Installation)
+1️⃣ Clone the GitHub Repository 
+```
+git clone https://github.com/<your-username>/my-todo-app.git
+```
+```
+cd my-todo-app
+```
 
-### `npm run build`
+2️⃣ Install Node Dependencies
+```
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3️⃣ Set up Firebase/Firestore
+1. Create a Firebase project at Firebase Console.
+2. Enable Authentication (Email/Password + Google Sign-In).
+3. Create a Firestore Database.
+4. Copy your Firebase config and update firebase.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID",
+};
 
-### `npm run eject`
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4️⃣ Run the App
+```
+npm start #Runs on localhost:3000
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# After installing and running...</br>
+## 🎀 You should be greeted by a pink login page!
+![Screenshot 2025-03-15 123444](https://github.com/user-attachments/assets/62354c61-7cb1-4166-9526-c95537e99d2a)
+</br>
+Sign up or log in manually, or use your Google account.
+</br>
+## 🌸 After you log in, the home page will greet you.
+![Screenshot 2025-03-15 123854](https://github.com/user-attachments/assets/0fa89f56-832e-4168-a66d-c1f4f02a062e)
+Add tasks, delete tasks, update tasks, and complete tasks. Completed tasks will automatically move to the bottom of the page and will be marked with a strikethrough.
+</br>
+## 🎁 Customize your profile picture and bio through the My Profile page!
+![Screenshot 2025-03-15 124206](https://github.com/user-attachments/assets/73a79ad9-629d-4c95-8c5a-925ab1420612)
+</br>
+⚠️ Don't forget to save your changes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## That's all! Thank you for using my To Do List App 😆
