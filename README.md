@@ -37,9 +37,7 @@ npm install
 
 3️⃣ Set up Firebase/Firestore
 1. Create a Firebase project at Firebase Console.
-2. Enable Authentication (Email/Password + Google Sign-In).
-3. Create a Firestore Database.
-4. Copy your Firebase config and update firebase.js
+2. Copy your Firebase config and update firebase.js like so:
 
 ```
 import { initializeApp } from "firebase/app";
@@ -59,6 +57,23 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 ```
+3. Enable Authentication (Email/Password + Google Sign-In).
+4. Create a Firestore Database.
+5. Add two collections named "tasks" and "users".
+6. In the "Rules" tab, update your rules to look like this:
+
+```
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if request.time < timestamp.date(2025, 4, 16);
+    }
+  }
+}
+```
+
 
 4️⃣ Run the App
 ```
@@ -67,7 +82,7 @@ npm start #Runs on localhost:3000
 
 # After installing and running...</br>
 ## 🎀 You should be greeted by a pink login page!
-![Screenshot 2025-03-15 123444](https://github.com/user-attachments/assets/62354c61-7cb1-4166-9526-c95537e99d2a)
+![image](https://github.com/user-attachments/assets/5370d784-3a64-4f95-a9a1-4cdd0c9792c1)
 </br>
 Sign up or log in manually, or use your Google account.
 </br>
